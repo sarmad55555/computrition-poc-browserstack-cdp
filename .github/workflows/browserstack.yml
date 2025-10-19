@@ -25,8 +25,13 @@ jobs:
 
       - name: Run CDP test on Desktop Chrome via BrowserStack
         run: npx ts-node tests/computrition.spec.ts
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
 
       - name: Run CDP test on iPhone 14 via BrowserStack
         run: npx ts-node tests/computrition.spec.ts
         env:
           BROWSERSTACK_DEVICE: 'iPhone 14'
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
