@@ -2,9 +2,9 @@
   "name": "computrition-poc-browserstack-cdp",
   "version": "1.0.0",
   "main": "index.js",
-"scripts": {
-  "test": "npx playwright test --config=browserstack.config.ts"
-},
+  "scripts": {
+    "test": "npx playwright test --config=browserstack.config.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
