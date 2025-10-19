@@ -15,7 +15,7 @@ export default defineConfig({
     trace: 'on',
     screenshot: 'on',
     video: 'on',
-    headless: false
+    headless: true
   },
   retries: 0,
   timeout: 60000,
