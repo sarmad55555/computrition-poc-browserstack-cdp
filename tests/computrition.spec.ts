@@ -4,13 +4,13 @@ import { chromium } from 'playwright';
   const device = process.env.BROWSERSTACK_DEVICE || 'Desktop Chrome';
 
   const caps: Record<string, any> = {
-    'browser': 'chrome',
-    'browser_version': 'latest',
-    'name': `Computrition CDP Test - ${device}`,
-    'build': 'CDP-PoC',
-    'browserstack.username': process.env.BROWSERSTACK_USERNAME,
-    'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY,
-    'client.playwrightVersion': '1.42.1'
+    browser: 'chrome',
+    browser_version: 'latest',
+    name: `Computrition CDP Test - ${device}`,
+    build: 'CDP-PoC',
+    browserstack.username: process.env.BROWSERSTACK_USERNAME,
+    browserstack.accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
+    client.playwrightVersion: '1.42.1'
   };
 
   if (device === 'iPhone 14') {
