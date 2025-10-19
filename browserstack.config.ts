@@ -14,7 +14,8 @@ export default defineConfig({
     baseURL: 'https://www.computrition.com',
     trace: 'on',
     screenshot: 'on',
-    video: 'on'
+    video: 'on',
+    headless: false
   },
   retries: 0,
   timeout: 60000,
