@@ -1,11 +1,11 @@
-name: Run Playwright Tests on BrowserStack
+name: Run Playwright Tests via BrowserStack Automate
 
 on:
   workflow_dispatch:
 
 jobs:
   test:
-    name: Playwright Tests on BrowserStack
+    name: Playwright Tests on BrowserStack Automate
     runs-on: ubuntu-latest
 
     steps:
@@ -20,21 +20,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-
-      - name: Setup BrowserStack environment
-        uses: browserstack/github-actions/setup-env@master
-        with:
-          username: ${{ secrets.BROWSERSTACK_USERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          build-name: "Playwright POC"
-          project-name: "Computrition"
-
-      - name: Setup BrowserStack Local
-        uses: browserstack/github-actions/setup-local@master
-        with:
-          local-testing: start
-
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run tests via BrowserStack Automate
+        run: npx browserstack-playwright --config browserstack.config.json
