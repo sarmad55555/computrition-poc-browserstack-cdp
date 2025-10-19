@@ -26,30 +26,30 @@ To run the full suite:
 
 ```bash
 npx playwright test --config=browserstack.config.ts
+```
 
----
 
 ## What You Get
 After each run, Playwright gives you:
 
-A full-page screenshot of the homepage
-A trace file you can open with npx playwright show-trace
-A video recording of the test run
-An HTML report with pass/fail status
+- A full-page screenshot of the homepage
+- A trace file you can open with npx playwright show-trace
+- A video recording of the test run
+- An HTML report with pass/fail status
 
 ## Known Issues and Limitations
 
 This POC was built and tested under a trial version of BrowserStack, which comes with a few constraints:
 
-Limited parallel sessions and device concurrency
-Occasional delays in test execution due to queueing
-Restricted access to advanced debugging features (e.g., extended logs, network capture)
+- Limited parallel sessions and device concurrency
+- Occasional delays in test execution due to queueing
+- Restricted access to advanced debugging features (e.g., extended logs, network capture)
 
 We also explored Chrome DevTools Protocol (CDP) routing for enhanced device emulation and traceability. While CDP works well locally, it’s blocked or partially unsupported in BrowserStack’s grid environment. All known routing paths were tested, including:
 
-connectOverCDP() for remote debugging
-launchServer() with custom port forwarding
-chromium.connect() with persistent context
+- connectOverCDP() for remote debugging
+- launchServer() with custom port forwarding
+- chromium.connect() with persistent context
 
 None of these approaches yielded stable results in the trial environment, so CDP-based flows are excluded from this POC.
 
