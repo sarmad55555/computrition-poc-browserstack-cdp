@@ -10,7 +10,7 @@ import { chromium } from 'playwright';
     build: 'CDP-PoC',
     'browserstack.username': process.env.BROWSERSTACK_USERNAME,
     'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY,
-    'client.playwrightVersion': '1.42.1'
+    'client.playwrightVersion': '1.54.2'
   };
 
   if (device === 'iPhone 14') {
