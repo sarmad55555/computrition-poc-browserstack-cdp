@@ -1,0 +1,44 @@
+{
+  "auth": {
+    "username": "sarmadnawaz_OAnZBU",
+    "access_key": "NKYXLefxpurp525nZefp"
+  },
+  "run_settings": {
+    "framework": "playwright",
+    "project_name": "Computrition POC",
+    "build_name": "Cross-platform CDP Demo",
+    "test_observability": true,
+    "specs": ["tests/computrition.spec.ts"],
+    "browserstack_local": false,
+    "parallels": 4
+  },
+  "capabilities": [
+    {
+      "browser": "chrome",
+      "os": "Windows",
+      "os_version": "11",
+      "name": "Chrome on Windows"
+    },
+    {
+      "device": "iPhone 14",
+      "os_version": "16",
+      "real_mobile": true,
+      "browser": "safari",
+      "name": "Safari on iPhone 14"
+    },
+    {
+      "device": "iPhone 14",
+      "os_version": "16",
+      "real_mobile": true,
+      "browser": "chrome",
+      "name": "Chrome on iPhone 14"
+    },
+    {
+      "device": "Samsung Galaxy S23",
+      "os_version": "13.0",
+      "real_mobile": true,
+      "browser": "chrome",
+      "name": "Chrome on Galaxy S23"
+    }
+  ]
+}
