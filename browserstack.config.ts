@@ -8,16 +8,6 @@ export default defineConfig({
         browserName: 'chromium',
         viewport: { width: 1280, height: 720 }
       }
-    },
-    {
-      name: 'iPhone 14',
-      use: {
-        browserName: 'webkit',
-        viewport: { width: 390, height: 844 },
-        deviceScaleFactor: 3,
-        isMobile: true,
-        hasTouch: true
-      }
     }
   ],
   use: {
