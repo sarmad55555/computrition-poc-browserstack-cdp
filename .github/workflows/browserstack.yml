@@ -1,29 +1,35 @@
 name: Run Playwright Tests on BrowserStack
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
 
 jobs:
   test:
+    name: Playwright Tests on BrowserStack
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Run Playwright tests on BrowserStack
-      uses: browserstack/github-action@v2
-      with:
-        username: ${{ secrets.BROWSERSTACK_USERNAME }}
-        access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-        config-file: browserstack.config.json
+      - name: Setup BrowserStack environment
+        uses: browserstack/github-actions/setup-env@master
+        with:
+          username: ${{ secrets.BROWSERSTACK_USERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          build-name: "Playwright POC"
+          project-name: "Computrition"
+
+      - name: Setup BrowserStack Local
+        uses: browserstack/github-actions/setup-local@master
+
+      - name: Run Playwright tests
+        run: npx playwright test
