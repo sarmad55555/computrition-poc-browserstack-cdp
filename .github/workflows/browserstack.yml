@@ -24,9 +24,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run CDP test on Desktop Chrome via BrowserStack
-        run: node tests/computrition.spec.ts
+        run: npx ts-node tests/computrition.spec.ts
 
       - name: Run CDP test on iPhone 14 via BrowserStack
-        run: node tests/computrition.spec.ts
+        run: npx ts-node tests/computrition.spec.ts
         env:
           BROWSERSTACK_DEVICE: 'iPhone 14'
