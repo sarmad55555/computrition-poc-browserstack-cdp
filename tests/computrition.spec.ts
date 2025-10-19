@@ -8,9 +8,9 @@ import { chromium } from 'playwright';
     browser_version: 'latest',
     name: `Computrition CDP Test - ${device}`,
     build: 'CDP-PoC',
-    browserstack.username: process.env.BROWSERSTACK_USERNAME,
-    browserstack.accessKey: process.env.BROWSERSTACK_ACCESS_KEY,
-    client.playwrightVersion: '1.42.1'
+    'browserstack.username': process.env.BROWSERSTACK_USERNAME,
+    'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY,
+    'client.playwrightVersion': '1.42.1'
   };
 
   if (device === 'iPhone 14') {
