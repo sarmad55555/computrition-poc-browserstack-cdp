@@ -2,7 +2,7 @@
   "name": "computrition-poc-browserstack-cdp",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
+"scripts": {
   "test": "npx playwright test --config=browserstack.config.ts"
 },
   "keywords": [],
