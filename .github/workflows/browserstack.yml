@@ -1,11 +1,11 @@
-name: Run Playwright Tests via BrowserStack Automate
+name: Run Playwright Tests on Desktop and iPhone
 
 on:
   workflow_dispatch:
 
 jobs:
   test:
-    name: Playwright Tests on BrowserStack Automate
+    name: Playwright Tests on Desktop and iPhone
     runs-on: ubuntu-latest
 
     steps:
@@ -20,5 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests via BrowserStack Automate
-        run: npx browserstack-playwright --config browserstack.config.json
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests (desktop + iPhone)
+        run: npx playwright test --project=desktop-chrome --project=iphone-14
