@@ -1,17 +1,25 @@
 import { chromium } from 'playwright';
 
 (async () => {
-  const caps = {
+  const device = process.env.BROWSERSTACK_DEVICE || 'Desktop Chrome';
+
+  const caps: Record<string, any> = {
     'browser': 'chrome',
     'browser_version': 'latest',
-    'device': 'iPhone 14',
-    'realMobile': 'true',
-    'name': 'Computrition CDP iPhone 14 Test',
+    'name': `Computrition CDP Test - ${device}`,
     'build': 'CDP-PoC',
     'browserstack.username': process.env.BROWSERSTACK_USERNAME,
     'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY,
     'client.playwrightVersion': '1.42.1'
   };
+
+  if (device === 'iPhone 14') {
+    caps.device = 'iPhone 14';
+    caps.realMobile = 'true';
+  } else {
+    caps.os = 'osx';
+    caps.os_version = 'ventura';
+  }
 
   const wsEndpoint = `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(JSON.stringify(caps))}`;
   const browser = await chromium.connectOverCDP(wsEndpoint);
@@ -19,7 +27,7 @@ import { chromium } from 'playwright';
   const page = await context.newPage();
 
   await page.goto('https://www.computrition.com');
-  await page.screenshot({ path: 'screenshots/iphone14-homepage.png', fullPage: true });
+  await page.screenshot({ path: `screenshots/${device}-homepage.png`, fullPage: true });
 
   const bannerText = page.locator('h1, h2, .elementor-heading-title').first();
   await bannerText.waitFor({ state: 'visible', timeout: 10000 });
@@ -29,7 +37,7 @@ import { chromium } from 'playwright';
     const href = await navLinks[i].getAttribute('href');
     if (href && href.startsWith('http')) {
       await page.goto(href);
-      await page.screenshot({ path: `screenshots/iphone14-nav-${i + 1}.png`, fullPage: true });
+      await page.screenshot({ path: `screenshots/${device}-nav-${i + 1}.png`, fullPage: true });
     }
   }
 

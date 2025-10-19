@@ -1,11 +1,11 @@
-name: Run Playwright Tests on Desktop and iPhone
+name: Run CDP Tests on BrowserStack
 
 on:
   workflow_dispatch:
 
 jobs:
   test:
-    name: Playwright Tests on Desktop and iPhone
+    name: CDP Tests on Desktop and iPhone 14
     runs-on: ubuntu-latest
 
     steps:
@@ -23,5 +23,10 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run Playwright tests (desktop + iPhone)
-        run: npx playwright test --project=desktop-chrome --project=iphone-14
+      - name: Run CDP test on Desktop Chrome via BrowserStack
+        run: node tests/computrition.spec.ts
+
+      - name: Run CDP test on iPhone 14 via BrowserStack
+        run: node tests/computrition.spec.ts
+        env:
+          BROWSERSTACK_DEVICE: 'iPhone 14'
