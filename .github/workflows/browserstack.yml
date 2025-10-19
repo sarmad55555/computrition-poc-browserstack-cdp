@@ -30,6 +30,4 @@ jobs:
 
       - name: Setup BrowserStack Local
         uses: browserstack/github-actions/setup-local@master
-
-      - name: Run Playwright tests
-        run: npx playwright test
+        with:
