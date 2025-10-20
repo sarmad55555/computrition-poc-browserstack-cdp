@@ -29,6 +29,24 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install
 
+      - name: Configure BrowserStack capabilities (debug)
+        run: |
+          cat > browserstack.yml <<'YML'
+          userName: ${BROWSERSTACK_USERNAME}
+          accessKey: ${BROWSERSTACK_ACCESS_KEY}
+
+          capabilities:
+            projectName: "Computrition E2E"
+            buildName: "Playwright CI #${{ github.run_number }}"
+            sessionName: "Desktop Chrome - ${{ github.sha }}"
+            loglevel: debug
+
+            debug: true              # Visual logs (screenshots per command)
+            consoleLogs: verbose     # JS console: errors|warnings|info|verbose|disable
+            networkLogs: true        # HAR capture
+            deviceLogs: true         # Browser/driver logs
+            video: true              # Keep session video
+
       - name: Run Playwright tests on BrowserStack
         run: npm run test
 
@@ -43,3 +61,5 @@ jobs:
         with:
           name: test-results
           path: test-results/
+
+          
