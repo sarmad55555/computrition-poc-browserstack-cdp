@@ -2,7 +2,7 @@
 
 This project is a focused Playwright test suite built to validate key UI elements of Computrition’s homepage. It’s integrated with BrowserStack for cross-browser testing and designed to run cleanly in CI/CD pipelines.
 
-Right now, we’re keeping it lean — just two reliable tests that do exactly what they need to:
+Right now, we’re keeping it lean i.e. just two reliable tests that do exactly what they need to:
 
 - Make sure the homepage loads and the footer is visible
 - Confirm that footer links are present and working
